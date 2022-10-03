@@ -32,17 +32,20 @@
     else if (playerSelection === "rock" && computerSelection === "scissors" 
     || playerSelection === "scissors" && computerSelection === "paper" 
     || playerSelection === "paper" && computerSelection === "rock") {
-      playerScore = playerScore++;
+      playerScore++;
       return "Player won";
     }
     else {
-      computerScore = computerScore++;
+      computerScore++;
       return "Machine won";
     }
   }
-  
+
   console.log(playRound(playerSelection, computerSelection));
-  
+
+  console.log("Player score"+" "+ playerScore)
+
+  console.log("Machine score"+" "+ computerScore)
 
   function game () {
   
@@ -78,23 +81,30 @@
     else if (playerSelection === "rock" && computerSelection === "scissors" 
     || playerSelection === "scissors" && computerSelection === "paper" 
     || playerSelection === "paper" && computerSelection === "rock") {
-      playerScore = playerScore++;
+      playerScore++;
       return "Player won";
     }
     else {
-      computerScore = computerScore++;
+      computerScore++;
       return "Machine won";
     }
   }
 
   console.log(playRound(playerSelection, computerSelection));
+
+  console.log("Player score"+" "+ playerScore)
+
+  console.log("Machine score"+" "+ computerScore)
   }
   
   if (playerScore > computerScore){
-      return "You win this game.";
+    return "You win this game.";
+  }
+  else if (playerScore <  computerScore){
+     return "You lose this game"
   }
   else{
-    return "You lose this game.";
+    return "This game is a tie.";
   }
   }
 
