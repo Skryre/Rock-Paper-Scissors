@@ -1,4 +1,3 @@
-  //computer selection
   var computerRandom =  Math.random() * 3;
   console.log(computerRandom);
   function getComputerChoice() {
@@ -15,16 +14,13 @@
   const computerSelection = getComputerChoice();
   console.log("The Machine played"+" "+computerSelection);
   
-  //player selection
   const playerSelection = prompt("What do you choose between rock, paper and scissors?");
   console.log("You played"+" "+playerSelection);
   
-  //score tracking
   let playerScore = 0;
   let computerScore = 0;
   let tieScore = 0;
 
-  //the game
   function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
       return "Tie";
@@ -49,10 +45,8 @@
 
   function game () {
   
-  //function of the Loop !!
   for (let i = 0; i < 4; i++) {
   
-  //computer selection
   var computerRandom =  Math.random() * 3;
   console.log(computerRandom);
   function getComputerChoice() {
@@ -69,11 +63,9 @@
   const computerSelection = getComputerChoice();
   console.log("The Machine played"+" "+computerSelection);
   
-  //player selection
   const playerSelection = prompt("What do you choose between rock, paper and scissors?");
   console.log("You played"+" "+playerSelection);
 
-  //game function in the loop
   function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
       return "Tie";
@@ -108,8 +100,4 @@
   }
   }
 
-  //play the Loop
   console.log(game());
-  
-
-// TROUVER UNE FACONS DE FAIRE POUR SAUVER LE NOMBRE DE FOIS JOUÉ
