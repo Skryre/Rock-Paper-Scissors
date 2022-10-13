@@ -36,12 +36,39 @@ function getComputerChoice() {
 let playerScore = 0;
 let computerScore = 0;
 
+const container = document.querySelector('#Results');
+const contMess = document.querySelector('#Message');
+
+const displayPlayer = document.createElement('div');
+displayPlayer.classList.add('Results-Player');
+displayPlayer.textContent = 'Player : ' + playerScore;
+
+const displayMachine = document.createElement('div');
+displayMachine.classList.add('Results-Machine');
+displayMachine.textContent = 'Machine : ' + computerScore;
+
+const displayResults=document.createElement('div');
+displayResults.classList.add('vvv');
+displayResults.textContent = 'Lets Go!!';
+
+container.appendChild(displayPlayer);
+container.appendChild(displayMachine);
+contMess.appendChild(displayResults);
+
+const buttons = document.querySelectorAll('button')
+function stopGame() {
+  buttons.forEach(elem => {
+      elem.disabled = true
+  })
+}
+
 function playRound(playerSelection) {
 
 let computerSelection = getComputerChoice();
 console.log("the machine played "+computerSelection);
 
 if (playerSelection === computerSelection) {
+  displayResults.textContent = 'It is a tie!! both of you picked '+ playerSelection+'!';
   return "Tie";
 }
 
@@ -50,16 +77,34 @@ else if ((playerSelection === "rock" && computerSelection === "scissors")
 || (playerSelection === "paper" && computerSelection === "rock")) {
 
   playerScore++
+  displayPlayer.textContent = 'Player : ' + playerScore;
   console.log("your score is "+playerScore)
-  if (playerScore === 5) { return "You won the game"}
-  else {return "Player won this round"}
+
+  if (playerScore === 5) { 
+    displayResults.textContent = 'You won this game, you reached '+playerScore+'!';
+    stopGame()
+    return "You won the game"
+  }
+  else {
+    displayResults.textContent = 'You won this round, '+playerSelection+' beats '+computerSelection+'!';
+    return "Player won this round"
+  }
 }
 
 else {
   computerScore++
+  displayMachine.textContent = 'Machine : ' + computerScore
   console.log("the machine score is "+computerScore)
-  if (computerScore === 5) { return "Machine won the game"}
-  else {return "Machine won this round"}
+
+  if (computerScore === 5) { 
+    displayResults.textContent = 'The Machine won this game, it reached '+computerScore+'!';
+    stopGame();
+    return "Machine won the game"
+  }
+  else {
+    displayResults.textContent = 'The machine won this round, '+computerSelection+' beats '+playerSelection+'!';
+    return "Machine won this round"
+  }
 }
-  
 }
+
