@@ -1,25 +1,27 @@
 const paperBtn = document.querySelector('#paperBtn');
 paperBtn.addEventListener('click', () => {
-  playerSelection = "paper";
+  let playerSelection = "paper";
+  console.log("player select "+playerSelection);
+  console.log(playRound(playerSelection));
+  
 });
 
 const rockBtn = document.querySelector('#rockBtn');
 rockBtn.addEventListener('click', () => {
-  playerSelection = "rock";
+  let playerSelection = "rock";
+  console.log("player select "+playerSelection);
+  console.log(playRound(playerSelection));
 });
 
 const scissorsBtn = document.querySelector('#scissorsBtn');
 scissorsBtn.addEventListener('click', () => {
-   playerSelection = "scissors";
+  let playerSelection = "scissors";
+  console.log("player select "+playerSelection);
+  console.log(playRound(playerSelection));
 });
 
-console.log("You played"+" "+playerSelection);
-
-
-var playerSelection = "";
-
-var computerRandom =  Math.random() * 3;
 function getComputerChoice() {
+  var computerRandom =  Math.random() * 3;
   if (computerRandom <= 1) {
     return "rock"
   }
@@ -30,28 +32,34 @@ function getComputerChoice() {
     return "paper"
   }
 };
-const computerSelection = getComputerChoice();
-console.log("The Machine played"+" "+computerSelection);
 
 let playerScore = 0;
 let computerScore = 0;
 
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
-    return "Tie";
-  }
-  else if (playerSelection === "rock" && computerSelection === "scissors" 
-  || playerSelection === "scissors" && computerSelection === "paper" 
-  || playerSelection === "paper" && computerSelection === "rock") {
-    playerScore++;
-    return "Player won";
-  }
-  else {
-    computerScore++;
-    return "Machine won";
-  }
+function playRound(playerSelection) {
+
+let computerSelection = getComputerChoice();
+console.log("the machine played "+computerSelection);
+
+if (playerSelection === computerSelection) {
+  return "Tie";
 }
 
-function gameOver() {
-  return playerScore === 5 || computerScore === 5
+else if ((playerSelection === "rock" && computerSelection === "scissors") 
+|| (playerSelection === "scissors" && computerSelection === "paper") 
+|| (playerSelection === "paper" && computerSelection === "rock")) {
+
+  playerScore++
+  console.log("your score is "+playerScore)
+  if (playerScore === 5) { return "You won the game"}
+  else {return "Player won this round"}
+}
+
+else {
+  computerScore++
+  console.log("the machine score is "+computerScore)
+  if (computerScore === 5) { return "Machine won the game"}
+  else {return "Machine won this round"}
+}
+  
 }
